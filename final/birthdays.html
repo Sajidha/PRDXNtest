@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="birthdaysStyle.css">
+  <link rel="stylesheet" type="text/css" href="birthdaysStyle.css">
 </head>
 <body>
 <div class="container">
@@ -53,7 +53,7 @@
     <!--Flexbox Calender End-->
 
     <div class="peopleList">
-    	<textarea>
+      <textarea>
     [
      {
       "name": "Tyrion Lannister",
@@ -96,9 +96,9 @@
     </div>
 
     <div id="yearRequest">
-    	<h4>Year</h4>
-    	<div><input type="number" name="year" id="inputYear" value="2017"></div>
-    	<button onclick="myFunction()" id="update">Update</button>
+      <h4>Year</h4>
+      <div><input type="number" name="year" id="inputYear" value="2017"></div>
+      <button onclick="myFunction()" id="update">Update</button>
     </div>
   </div>
 </div>
@@ -109,23 +109,16 @@ myFunction();
 
 function myFunction() {
 
-    document.getElementById("monCont").innerHTML = "";
-    document.getElementById("tueCont").innerHTML = "";
-    document.getElementById("wedCont").innerHTML = "";
-    document.getElementById("thuCont").innerHTML = "";
-    document.getElementById("friCont").innerHTML = "";
-    document.getElementById("satCont").innerHTML = "";
-    document.getElementById("sunCont").innerHTML = "";
+    emptyElementsByClassName('birthdayInitials');
 
     var items = json.list;
 
     var userInput = document.getElementById("inputYear").value;
 
     for(var i = 0; i < items.length; i++) {
-    	var arrdate = items[i].bdate.split("/");
-		arrdate[2] = userInput;
-		items[i].bdate = arrdate[0]+"/"+arrdate[1]+"/"+arrdate[2];
-		console.log(items[i].bdate);
+      var arrdate = items[i].bdate.split("/");
+    arrdate[2] = userInput;
+    items[i].bdate = arrdate[0]+"/"+arrdate[1]+"/"+arrdate[2];
     }
     
     for(var j = 0; j < items.length; j++) {
@@ -143,46 +136,49 @@ function myFunction() {
 
     var n = weekday[d.getDay()];
 
-    console.log(n);
-
     var nameInitials = "";
     var arrname = items[j].name.split(' ');
-    	for(var k=0;k<arrname.length;k++) {
-		     nameInitials += arrname[k].substr(0,1);
-		     console.log(nameInitials);
-		} 
+      for(var k=0;k<arrname.length;k++) {
+         nameInitials += arrname[k].substr(0,1);
+    } 
 
     if(n==="Monday") { 
-    	document.getElementById("monCont").innerHTML += '<div class="initials">'+nameInitials+'</div>';
+      document.getElementById("monCont").innerHTML += '<div class="initials">'+nameInitials+'</div>';
     }
     else if(n==="Tuesday") { 
-    	document.getElementById("tueCont").innerHTML += '<div class="initials">'+nameInitials+'</div>';
+      document.getElementById("tueCont").innerHTML += '<div class="initials">'+nameInitials+'</div>';
     }
     else if(n==="Wednesday") {
-    	document.getElementById("wedCont").innerHTML += '<div class="initials">'+nameInitials+'</div>';
+      document.getElementById("wedCont").innerHTML += '<div class="initials">'+nameInitials+'</div>';
     }
     else if(n==="Thursday") {
-    	document.getElementById("thuCont").innerHTML += '<div class="initials">'+nameInitials+'</div>';
+      document.getElementById("thuCont").innerHTML += '<div class="initials">'+nameInitials+'</div>';
     }
     else if(n==="Friday") {
-    	document.getElementById("friCont").innerHTML += '<div class="initials">'+nameInitials+'</div>';
+      document.getElementById("friCont").innerHTML += '<div class="initials">'+nameInitials+'</div>';
     }
     else if(n==="Saturday") {
-    	document.getElementById("satCont").innerHTML += '<div class="initials">'+nameInitials+'</div>';
+      document.getElementById("satCont").innerHTML += '<div class="initials">'+nameInitials+'</div>';
     }
     else if(n==="Sunday") {
-    	document.getElementById("sunCont").innerHTML += '<div class="initials">'+nameInitials+'</div>';
+      document.getElementById("sunCont").innerHTML += '<div class="initials">'+nameInitials+'</div>';
     }
-	}
+  }
 
     var colors = ['#555d7b', '#9fd400', '#c97d99', '#79cae5', '#e8492a', '#0055d0', '#ff1baa', '#0dccfe'];
-	var boxes = document.querySelectorAll(".initials");
+  var boxes = document.querySelectorAll(".initials");
 
-	for (var l = 0; l < boxes.length; l++) {
-	  // Pick a random color from the array 'colors'.
-	  boxes[l].style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];     
-	}
+  for (var l = 0; l < boxes.length; l++) {
+    boxes[l].style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];     
+  }
 
+}
+
+function emptyElementsByClassName(className){
+    var elements = document.getElementsByClassName(className);
+    for (var i = 0; i < elements.length; i++) {
+    elements[i].innerHTML=""; 
+  }
 }
 </script>
 
