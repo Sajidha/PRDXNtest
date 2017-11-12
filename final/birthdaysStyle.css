@@ -68,6 +68,8 @@
 .peopleList textarea {
   width: 500px;
   height: 300px;
+  overflow: hidden;
+  border: 1px solid #D7DBDD;
 }
 button#update {
     margin: 20px 0;
@@ -83,7 +85,7 @@ button#update {
     float: left;
     margin-left: 20px;
 }
-#inputYear {padding: 5px;}
+#inputYear {padding: 5px; border: 1px solid #D7DBDD;}
 #yearRequest h4 {
     margin: 0 0 10px;
     color: #5a6a77;
